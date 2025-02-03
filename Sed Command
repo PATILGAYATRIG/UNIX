@@ -1,0 +1,30 @@
+--SED COMMAND QUESTIONS--
+1) To print the first 10 lines of the file.
+Solution: sed -n '1,10p' emply2.txt   
+
+2)To print different range of line like 1to 5 then 10 to 15  21 to 24
+Solution: sed -n -e '1,10p' -e '10,15p' -e '21,24p' emply2.txt
+
+3)Want to find something on the basis of some pattern
+Solution:sed –n ‘/director/p’ emply2.txt
+
+4)To find and replace something in file or it is called substitution.
+Solution:sed ‘s/director/HR/g’ emply2.txt      
+
+5)we only want to find and replace only first 10 lines
+Solution:sed ‘1,10s/director/HR/g’ emply2.txt
+
+6) we only want to find and replace only first 10 lines
+Solution: sed ‘1,10s/director/HR/g’ emply2.txt 
+ 
+7)Find and replace and Redirect the output to a file 
+Solution: sed ‘s/director/HR/g’ emply2.txt >HR.txt
+
+8)Find and replace in original file by taking backup
+Of original file
+Solution: sed –i.back ‘s/director/HR/gi’ emply2.txt 
+9)Delete something with some pattern 
+Solution: sed ‘/director/d’ emply2.txt
+
+10) Want to print everything except a particular pattern for this we will use negate operator.
+Solution: sed –n ‘/director/!p’ emply2.txt >test.txt

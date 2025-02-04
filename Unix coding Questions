@@ -1,0 +1,11 @@
+UNIX Coding questions 
+
+1.	Extract those records from employee.txt file who stays in 'Maharashtra' 
+Or  ‘Gujarat’ and whose designation is 'Manager' or ‘HR’ and whose name starts with 'A' followed by anything.
+Solution: awk -F"|" '$6~/Maharashtra/ || $6~/Gujarat/{print}' emp.txt | awk -F"|" '$7~/Manager/ || $7~/HR/{print}' | awk -F"|" '$2~/^A.*/{pr
+int}'  
+
+2.	Extract those records from employee.txt file who belongs to 'Maharashtra' and whose salary is greater than 30k but less than 60k. In the final output no need of Header in that file. 
+Solution: sed  '1d' emp.txt | awk -F"|" '$6~/Maharashtra/{print}'| awk -F"|" '$8>30000 && $8<60000{print}'
+
+3.	You have employee.txt file and in that file there are records for Manager, Director, HR designation. So I want to replace those records whose designation is 'HR' to 'Admin' and belonging to 'Maharashtra' who is atleast 35 years old.

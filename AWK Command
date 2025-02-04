@@ -1,0 +1,38 @@
+--AWK COMMAND QUESTIONS—
+1) First Requirement  I want to print 2,3 and 6 Column from my file 
+Solution: awk –F “|”  ‘{print $2,$3,$6}’ employee.txt
+
+2)Second requirement is want to print from 3rd line to 10th line and  want to print 2 ,3 and 6 column.
+Solution: awk –F “|”  ‘NR==3,NR==10{print $2,$3,$6}’ employee.txt
+
+3) Third Requrement  want to print only those records who are having 8 columns
+Solution: awk –F “|” ‘NF ==8{print}’ employee.txt >goodfile.txt
+
+ 4) Fourth requirement  want to see only Maharashtra people.
+Solution: awk –F “|” ‘$3~/HR/{print}’ employee.txt 
+
+5) Fifth Requirement   want to see records who are having salary grater then 10,000
+Solution: awk –F “|” ‘$6 >10000{print}’ emp.txt
+
+6) Sixth requirement  if I want to change the delimiter in my output file
+Solution: awk –F “|” ‘{OFS =“,”} {print $1,$2,$3,$4,$5}’  emp.txt
+
+7) 7th  requirement  I want to see the data for Maharashtra region and along with that the age should be grater then or equal to 30 
+Solution: awk -F "|" '$6~/Maharashtra/ && $5<=30 {print}' employee.txt > emp_mh.txt
+8)  8th requirement  I want to see the data for Maharashtra region and only for Female employees
+Solution: awk -F "|" 'NF==8 && $4~/Female/ && $6~/Maharashtra/ {print}' employee.txt > Femaledata.txt 
+
+9) 9th requirement  Employee Belongs to Maharashtra and age should be less or equals to 30 
+Solution: sed -n '/Maharashtra/ip' employee.txt | awk -F "|" ‘$5 <= 30{print}’ >test.txt
+
+10) 10th requirement  Employee Belongs to Maharashtra and age should be less or equals to 30 and whose name starts with A
+Solution: sed -n '/Maharashtra/p' emp.txt | awk -F "|" '$5<=30 {print}' | awk -F "|" '$2~/^A.*/{print}’
+
+11) 11th Requirement  Employee Belongs to Maharashtra and age should be less or equals to 30 and the record should contains exactly 8 columns.
+Solution: sed -n '/Maharashtra/Ip' employee.txt | awk -F "|" '$5<= 30{print}' | awk -F "|" 'NF==8 {print}' >test.txt
+
+12) 12th Requirement   Display the data for chairman and director
+Solution: awk -F "|" '$7~/director/ || $7 ~ /chairman/{print}' employee.txt
+
+13) 13th Requirement  whose name contains th either in their first name or in their second name 
+Solution:awk -F "|" '$2~/th/||$3~/th/{print}' emp.txt
